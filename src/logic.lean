@@ -244,19 +244,32 @@ end
 theorem demorgan_conj_converse :
   (¬Q ∨ ¬P) → ¬(P∧Q)  :=
 begin
-  sorry,
+  intro nqRnp,
+  intro pq,
+  cases pq with p q,
+  cases nqRnp with nq np,
+    contradiction,
+    contradiction,
 end
 
 theorem demorgan_conj_law :
   ¬(P∧Q) ↔ (¬Q ∨ ¬P)  :=
 begin
-  sorry,
+  split,
+  have k := demorgan_conj P Q,
+  exact k,
+  have k := demorgan_conj_converse P Q,
+  exact k,
 end
 
 theorem demorgan_disj_law :
   ¬(P∨Q) ↔ (¬P ∧ ¬Q)  :=
 begin
-  sorry,
+  split,
+  have k := demorgan_disj P Q,
+  exact k,
+  have k := demorgan_disj_converse P Q,
+  exact k,
 end
 
 ------------------------------------------------
@@ -266,25 +279,76 @@ end
 theorem distr_conj_disj :
   P∧(Q∨R) → (P∧Q)∨(P∧R)  :=
 begin
-  sorry,
+  intro pqRr,
+  cases pqRr with p qRr,
+  cases qRr with q r,
+  left,
+  have pq : P ∧ Q,
+    split,
+    exact p,
+    exact q,
+  exact pq,
+  right,
+  have pr : P ∧ R,
+    split,
+    exact p,
+    exact r,
+  exact pr,
 end
 
 theorem distr_conj_disj_converse :
   (P∧Q)∨(P∧R) → P∧(Q∨R)  :=
 begin
-  sorry,
+  intro pqRpr,
+  cases pqRpr with pq pr,
+    cases pq with p q,
+    split,
+    exact p,
+    left,
+    exact q,
+    cases pr with p r,
+    split,
+    exact p,
+    right,
+    exact r,
+  
 end
 
 theorem distr_disj_conj :
   P∨(Q∧R) → (P∨Q)∧(P∨R)  :=
 begin
-  sorry,
+  intro pRqr,
+  cases pRqr with p qr,
+  split,
+  left,
+  exact p,
+  left,
+  exact p,
+  cases qr with q r,
+  split,
+  right,
+  exact q,
+  right,
+  exact r,
 end
 
 theorem distr_disj_conj_converse :
   (P∨Q)∧(P∨R) → P∨(Q∧R)  :=
 begin
-  sorry,
+  intro pRqpRr,
+  cases pRqpRr with pRq pRr,
+  cases pRq with p q,
+  left,
+  exact p,
+  cases pRr with p r,
+  left,
+  exact p,
+  right,
+  have qr : Q∧R,
+    split,
+    exact q,
+    exact r,
+  exact qr,
 end
 
 
@@ -295,13 +359,26 @@ end
 theorem curry_prop :
   ((P∧Q)→R) → (P→(Q→R))  :=
 begin
-  sorry,
+  intro pqTr,
+  intro p,
+  intro q,
+  have pq : P∧Q,
+    split,
+    exact p,
+    exact q,
+  have r := pqTr pq,
+  exact r,
 end
 
 theorem uncurry_prop :
   (P→(Q→R)) → ((P∧Q)→R)  :=
 begin
-  sorry,
+  intro pTqTr,
+  intro pq,
+  cases pq with p q,
+  have qTr := pTqTr p,
+  have r := qTr q,
+  exact r,
 end
 
 
@@ -312,7 +389,8 @@ end
 theorem impl_refl :
   P → P  :=
 begin
-  sorry,
+  intro p,
+  exact p,
 end
 
 ------------------------------------------------
@@ -322,37 +400,59 @@ end
 theorem weaken_disj_right :
   P → (P∨Q)  :=
 begin
-  sorry,
+  intro p,
+  left,
+  exact p,
 end
 
 theorem weaken_disj_left :
   Q → (P∨Q)  :=
 begin
-  sorry,
+  intro q,
+  right,
+  exact q,
 end
 
 theorem weaken_conj_right :
   (P∧Q) → P  :=
 begin
-  sorry,
+  intro pq,
+  cases pq with p q,
+  exact p,
 end
 
 theorem weaken_conj_left :
   (P∧Q) → Q  :=
 begin
-  sorry,
+  intro pq,
+  cases pq with p q,
+  exact q,
 end
 
 theorem conj_idempot :
   (P∧P) ↔ P :=
 begin
-  sorry,
+  split,
+  intro pp,
+  cases pp with p1 p2,
+  exact p1,
+  intro p,
+  split,
+  exact p,
+  exact p,
 end
 
 theorem disj_idempot :
   (P∨P) ↔ P  :=
 begin
-  sorry,
+  split,
+  intro pRp,
+  cases pRp with p1 p2,
+  exact p1,
+  exact p2,
+  intro p,
+  left,
+  exact p,
 end
 
 end propositional
