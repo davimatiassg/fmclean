@@ -556,31 +556,58 @@ end
 theorem forall_as_neg_exists :
   (∀x, P x) → ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+  intro Fxpx,
+  intro Exnpx,
+  cases Exnpx with x npx,
+  have px := Fxpx x,
+  contradiction,
 end
 
 theorem forall_as_neg_exists_converse :
   ¬(∃x, ¬P x) → (∀x, P x)  :=
 begin
-  sorry,
+  intro nEnpx,
+  intro x,
+  by_contra npx,
+  have Enpx : ∃x, ¬P x,
+    existsi x,
+    exact npx,
+  contradiction,
 end
 
 theorem exists_as_neg_forall_converse :
   ¬(∀x, ¬P x) → (∃x, P x)  :=
 begin
-  sorry,
+  intro nFnpx,
+  by_contra nEpx,
+  have nFnpx : ∀x, ¬P x,
+    intro x,
+    intro px,
+    have Epx: ∃x, P x,
+      existsi x,
+      exact px,
+    contradiction,
+  contradiction,
 end
 
 theorem forall_as_neg_exists_law :
   (∀x, P x) ↔ ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  have k := forall_as_neg_exists U P,
+  exact k,
+  have k := forall_as_neg_exists_converse U P,
+  exact k,
 end
 
 theorem exists_as_neg_forall_law :
   (∃x, P x) ↔ ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  have k := exists_as_neg_forall U P,
+  exact k,
+  have k := exists_as_neg_forall_converse U P,
+  exact k,
 end
 
 
