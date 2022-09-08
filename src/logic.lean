@@ -12,7 +12,7 @@ theorem doubleneg_intro :
   P → ¬¬P  :=
 begin
   intro h,
-  assume ¬(P),
+  intro g,
   contradiction,
 end
 
@@ -25,14 +25,17 @@ begin
   },
   {intro g,
   have q:= g h,
-  exfalso,
-  exact q,}
+  contradiction,}
 end
 
 theorem doubleneg_law :
   ¬¬P ↔ P  :=
 begin
-  sorry,
+  split,
+  have k := doubleneg_elim P,
+  exact k,
+  have k := doubleneg_intro P,
+  exact k,
 end
 
 ------------------------------------------------
@@ -44,20 +47,20 @@ theorem disj_comm :
 begin
   intro h,
   cases h with hp hq,
-  {right,
-  assumption,},
-  {left,
-  assumption,}
+  right,
+  assumption,
+  left,
+  assumption,
 end
 
 theorem conj_comm :
   (P ∧ Q) → (Q ∧ P)  :=
 begin
   intro h,
-  split,{
-    exact h,
-  },{
-  },
+  cases h with hp hq,
+  split,
+  exact hq,
+  exact hp,
 end
 
 
@@ -68,13 +71,21 @@ end
 theorem impl_as_disj_converse :
   (¬P ∨ Q) → (P → Q)  :=
 begin
-  sorry,
+  intro h,
+  intro p,
+  cases h with hnp hq,
+  contradiction,
+  exact hq,
 end
 
 theorem disj_as_impl :
   (P ∨ Q) → (¬P → Q)  :=
 begin
-  sorry,
+  intro h,
+  intro np,
+  cases h with p q,
+  contradiction,
+  exact q,
 end
 
 
@@ -85,19 +96,32 @@ end
 theorem impl_as_contrapositive :
   (P → Q) → (¬Q → ¬P)  :=
 begin
-  sorry,
+  intro h,
+  intro nq,
+  intro p,
+  have q := h p,
+  contradiction,
 end
 
 theorem impl_as_contrapositive_converse :
   (¬Q → ¬P) → (P → Q)  :=
 begin
-  sorry,
+  intro h,
+  intro p,
+  by_cases lemQ: Q,
+  exact lemQ,
+  have np := h lemQ,
+  contradiction,
 end
 
 theorem contrapositive_law :
   (P → Q) ↔ (¬Q → ¬P)  :=
 begin
-  sorry,
+  split,
+  have k := impl_as_contrapositive P Q,
+  exact k,
+  have k := impl_as_contrapositive_converse P Q,
+  exact k,
 end
 
 
@@ -108,7 +132,15 @@ end
 theorem lem_irrefutable :
   ¬¬(P∨¬P)  :=
 begin
-  sorry,
+  intro nLEM,
+  have LEM : P ∨ ¬P,
+    right,
+    intro p,
+    have re_LEM : P ∨ ¬P,
+      left,
+      exact p,
+      contradiction,
+  contradiction,
 end
 
 
@@ -119,9 +151,20 @@ end
 theorem peirce_law_weak :
   ((P → Q) → P) → ¬¬P  :=
 begin
-  sorry,
+  intro h,
+  intro np,
+  have h_contraposer := impl_as_contrapositive (P → Q) P,
+  have contrapos_h := h_contraposer h,
+  have n_ptoq := contrapos_h np,
+  have ptoq : P → Q,
+    intro p,
+    contradiction,
+  contradiction,
 end
 
+-------------------
+-- Estou ciente de que o jeito acima é mais trabalhoso do que o ideal. Fiz-lhe assim e assim manter-lhe-ei por fins científicos somente.
+-------------------
 
 ------------------------------------------------
 -- Proposições de interdefinabilidade dos ∨,∧:
@@ -130,13 +173,23 @@ end
 theorem disj_as_negconj :
   P∨Q → ¬(¬P∧¬Q)  :=
 begin
-  sorry,
+  intro porq,
+  intro npnq,
+  cases npnq with np nq,
+  cases porq with p q,
+  contradiction,
+  contradiction,
 end
 
 theorem conj_as_negdisj :
   P∧Q → ¬(¬P∨¬Q)  :=
 begin
-  sorry,
+  intro pq,
+  intro npRnq,
+  cases pq with p q,
+  cases npRnq with np nq,
+  contradiction,
+  contradiction,
 end
 
 
@@ -147,19 +200,45 @@ end
 theorem demorgan_disj :
   ¬(P∨Q) → (¬P ∧ ¬Q)  :=
 begin
-  sorry,
+  intro npRq,
+  split,
+  intro p,
+  have pRq : P ∨ Q,
+    left,
+    exact p,
+  contradiction,
+  intro q,
+  have pRq : P ∨ Q,
+    right,
+    exact q,
+  contradiction,
 end
 
 theorem demorgan_disj_converse :
   (¬P ∧ ¬Q) → ¬(P∨Q)  :=
 begin
-  sorry,
+  intro npnq,
+  intro pRq,
+  cases npnq with np nq,
+  cases pRq with p q,
+    contradiction,
+    contradiction,
 end
 
 theorem demorgan_conj :
   ¬(P∧Q) → (¬Q ∨ ¬P)  :=
 begin
-  sorry,
+  intro npq,
+  by_cases lemp : P,
+  left,
+  by_contradiction nnq,
+  have cont :P∧Q,
+    split,
+    exact lemp,
+    exact nnq,
+  contradiction,
+  right,
+  exact lemp,
 end
 
 theorem demorgan_conj_converse :
