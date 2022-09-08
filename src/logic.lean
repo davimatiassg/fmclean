@@ -618,38 +618,87 @@ end
 theorem exists_conj_as_conj_exists :
   (∃x, P x ∧ Q x) → (∃x, P x) ∧ (∃x, Q x)  :=
 begin
-  sorry,
+  intro Expxqx,
+  cases Expxqx with x pxqx,
+  cases pxqx with px qx,
+  split,
+  existsi x,
+  exact px,
+  existsi x,
+  exact qx,
 end
 
 theorem exists_disj_as_disj_exists :
   (∃x, P x ∨ Q x) → (∃x, P x) ∨ (∃x, Q x)  :=
 begin
-  sorry,
+  intro ExpxRqx,
+  cases ExpxRqx with x pxRqx,
+  cases pxRqx with px qx,
+  left,
+  existsi x,
+  exact px,
+  right,
+  existsi x,
+  exact qx,
 end
 
 theorem exists_disj_as_disj_exists_converse :
   (∃x, P x) ∨ (∃x, Q x) → (∃x, P x ∨ Q x)  :=
 begin
-  sorry,
+  intro ExpxRExqx,
+  cases ExpxRExqx with Expx Exqx,
+  cases Expx with x px,
+  existsi x,
+  left,
+  exact px,
+  cases Exqx with x qx,
+  existsi x,
+  right,
+  exact qx,
 end
 
 theorem forall_conj_as_conj_forall :
   (∀x, P x ∧ Q x) → (∀x, P x) ∧ (∀x, Q x)  :=
 begin
-  sorry,
+  intro Fpxqx,
+  split,
+  intro x,
+  have pxqx := Fpxqx x,
+  cases pxqx with px qx,
+  exact px,
+  intro x,
+  have pxqx := Fpxqx x,
+  cases pxqx with px qx,
+  exact qx,
+  
 end
 
 theorem forall_conj_as_conj_forall_converse :
   (∀x, P x) ∧ (∀x, Q x) → (∀x, P x ∧ Q x)  :=
 begin
-  sorry,
+  intro FxpxFxqx,
+  intro x,
+  cases FxpxFxqx with Fxpx Fxqx,
+  split,
+  have px := Fxpx x,
+  exact px,
+  have qx := Fxqx x,
+  exact qx,
 end
 
 
 theorem forall_disj_as_disj_forall_converse :
   (∀x, P x) ∨ (∀x, Q x) → (∀x, P x ∨ Q x)  :=
 begin
-  sorry,
+  intro FxpxRFxqx,
+  intro x,
+  cases FxpxRFxqx with Fxpx Fxqx,
+  have px := Fxpx x,
+  left,
+  exact px,
+  have qx := Fxqx x,
+  right,
+  exact qx,
 end
 
 
