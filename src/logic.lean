@@ -474,37 +474,68 @@ variables P Q : U -> Prop
 theorem demorgan_exists :
   ¬(∃x, P x) → (∀x, ¬P x)  :=
 begin
-  sorry,
+  intro nEpx,
+  intro x,
+  intro px,
+  have cont : (∃x, P x),
+    existsi x,
+    exact px,
+  contradiction,
+    
 end
 
 theorem demorgan_exists_converse :
   (∀x, ¬P x) → ¬(∃x, P x)  :=
 begin
-  sorry,
+  intro xp,
+  intro nxp,
+  cases nxp with x,
+  have cont := xp x,
+  contradiction,
 end
 
 theorem demorgan_forall :
   ¬(∀x, P x) → (∃x, ¬P x)  :=
 begin
-  sorry,
+  apply impl_as_contrapositive_converse  (¬(∀x, P x)) (∃x, ¬P x),
+  intro nEnpx,
+  apply doubleneg_intro (∀x, P x),
+  intro x,
+  by_contra,
+  have Enpx : ∃x, ¬P x,
+    existsi x,
+    exact h,
+  contradiction,
 end
 
 theorem demorgan_forall_converse :
   (∃x, ¬P x) → ¬(∀x, P x)  :=
 begin
-  sorry,
+  intro Exnpx,
+  intro Fxpx,
+  cases Exnpx with x npx,
+  have px := Fxpx x,
+  contradiction,
 end
 
 theorem demorgan_forall_law :
   ¬(∀x, P x) ↔ (∃x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  have k := demorgan_forall U P,
+  exact k,
+  have k := demorgan_forall_converse U P,
+  exact k,
 end
 
 theorem demorgan_exists_law :
   ¬(∃x, P x) ↔ (∀x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  have k := demorgan_exists U P,
+  exact k,
+  have k := demorgan_exists_converse U P,
+  exact k,
 end
 
 
@@ -515,7 +546,11 @@ end
 theorem exists_as_neg_forall :
   (∃x, P x) → ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  intro Epx,
+  intro nFnpx,
+  cases Epx with x px,
+  have npx := nFnpx x,
+  contradiction,
 end
 
 theorem forall_as_neg_exists :
