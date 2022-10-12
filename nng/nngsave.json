@@ -69,27 +69,32 @@
     {
       "lean": "lemma mul_add (t a b : mynat) : t * (a + b) = t * a + t * b :=\n",
       "isSolved": true,
-      "editorText": "induction a with n hn,\ninduction b with m hm,\nrw add_zero,\nrw mul_zero,\nrw add_zero,\nrefl,\nrw zero_add,\nrw mul_zero,\nrw zero_add,\nrefl,\nrw succ_add,\nrw mul_succ,\nrw mul_succ,\nrw add_assoc,\nrw add_comm t (t*b),\nrw hn,\nrw add_assoc,\nrefl,\n"
+      "editorText": "induction a with n hn,\nrw mul_zero,\nrw zero_add,\nrw zero_add,\nrefl,\nrw add_comm (succ n) b,\nrw add_succ,\nrw add_comm b n,\nrw mul_succ,\nrw mul_succ,\nrw hn,\nrw add_comm,\nrw add_comm (t*n) t,\nrw add_assoc,\nrefl,\n"
     },
     {
       "lean": "lemma mul_assoc (a b c : mynat) : (a * b) * c = a * (b * c) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction c with n hn,\r\nrepeat {rw mul_zero},\r\nrepeat {rw mul_succ},\r\nrepeat {rw mul_add},\r\nrw hn,\r\nrefl,\r\n"
     },
     {
       "lean": "lemma succ_mul (a b : mynat) : succ a * b = a * b + b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction b with n hn,\r\nrepeat {rw mul_zero},\r\nrw add_zero,\r\nrefl,\r\nrepeat { rw mul_succ },\r\nrepeat { rw add_succ },\r\nrw hn,\r\nrw add_assoc,\r\nrw add_comm n a,\r\nrw add_assoc,\r\nrefl,"
     },
     {
       "lean": "lemma add_mul (a b t : mynat) : (a + b) * t = a * t + b * t :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction t with n hn,\r\nrepeat {rw mul_zero},\r\nrefl,\r\nrepeat {rw mul_succ},\r\nrw hn,\r\nrw add_assoc (a * n) a (b * n + b),\r\nrw add_comm a (b * n + b),\r\nrw add_assoc  (b * n) b a,\r\nrw add_assoc (a * n) (b * n) (a + b),\r\nrw add_comm b a,\r\nrefl,\r\n\r\n\r\n\r\n"
     },
     {
       "lean": "lemma mul_comm (a b : mynat) : a * b = b * a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction a with n hn,\r\nrw zero_mul,\r\nrw mul_zero,\r\nrefl,\r\nrw succ_mul,\r\nrw mul_succ,\r\nrw hn,\r\nrw add_comm,\r\nrefl,\r\n"
     },
     {
       "lean": "lemma mul_left_comm (a b c : mynat) : a * (b * c) = b * (a * c) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw mul_comm,\r\nrw mul_assoc,\r\nrw mul_comm a c,\r\nrefl,\r\n"
     },
     {
       "lean": "lemma zero_pow_zero : (0 : mynat) ^ (0 : mynat) = 1 :=\n",
