@@ -228,23 +228,28 @@
     },
     {
       "lean": "example (P Q : Prop) (p : P) (q : Q) : P ∧ Q :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\r\nexact p,\r\nexact q,\r\n"
     },
     {
       "lean": "lemma and_symm (P Q : Prop) : P ∧ Q → Q ∧ P :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro pyq,\r\ncases pyq with p q,\r\nsplit,\r\nexact q,\r\nexact p,\r\n\r\n"
     },
     {
       "lean": "lemma and_trans (P Q R : Prop) : P ∧ Q → Q ∧ R → P ∧ R :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro pyq,\r\nintro qyr,\r\nsplit,\r\ncases pyq with p q,\r\nexact p,\r\ncases qyr with q r,\r\nexact r,"
     },
     {
       "lean": "lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro piq,\r\nintro qir,\r\ncases piq with pq qp,\r\ncases qir with qr rq,\r\nsplit,\r\nintro p,\r\nexact qr (pq p),\r\nintro r,\r\nexact qp (rq r),"
     },
     {
       "lean": "lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro piq,\r\nintro qir,\r\nsplit,\r\nintro p,\r\nexact qir.1(piq.1 p),\r\nintro r,\r\nexact piq.2(qir.2 r),"
     },
     {
       "lean": "example (P Q : Prop) : Q → (P ∨ Q) :=\n",
