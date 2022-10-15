@@ -154,7 +154,7 @@
     {
       "lean": "example (P Q R S T U: Type)\n(p : P)\n(h : P → Q)\n(i : Q → R)\n(j : Q → T)\n(k : S → T)\n(l : T → U)\n: U :=\n",
       "isSolved": true,
-      "editorText": "apply l,\r\napply j,\r\napply h,\r\napply p,\r\n"
+      "editorText": "have q := h p,\r\nhave t := j q,\r\nhave u := l t,\r\nexact u,\r\n"
     },
     {
       "lean": "example (P Q : Type) : P → (Q → P) :=\n",
@@ -199,7 +199,7 @@
     {
       "lean": "lemma maze (P Q R S T U: Prop)\n(p : P)\n(h : P → Q)\n(i : Q → R)\n(j : Q → T)\n(k : S → T)\n(l : T → U)\n: U :=\n",
       "isSolved": true,
-      "editorText": "apply l,\r\napply j,\r\napply h,\r\nexact p,"
+      "editorText": "have q := h p,\r\nhave t := j q,\r\nexact l t,"
     },
     {
       "lean": "example (P Q : Prop) : P → (Q → P) :=\n",
@@ -249,7 +249,7 @@
     {
       "lean": "lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=\n",
       "isSolved": true,
-      "editorText": "intro piq,\r\nintro qir,\r\nsplit,\r\nintro p,\r\nexact qir.1(piq.1 p),\r\nintro r,\r\nexact piq.2(qir.2 r),"
+      "editorText": "intro piq,\r\nintro qir,\r\ncases piq with pq qp,\r\ncases qir with qr rq,\r\nsplit,\r\nintro p,\r\nexact qr (pq p),\r\nintro r,\r\nexact qp (rq r),"
     },
     {
       "lean": "example (P Q : Prop) : Q → (P ∨ Q) :=\n",
@@ -278,47 +278,56 @@
     },
     {
       "lean": "theorem succ_inj' {a b : mynat} (hs : succ(a) = succ(b)) :  a = b := \n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "apply succ_inj,\r\nassumption,\r\n"
     },
     {
       "lean": "theorem succ_succ_inj {a b : mynat} (h : succ(succ(a)) = succ(succ(b))) :  a = b := \n",
-      "editorText": "sorry"
+      "editorText": " apply succ_inj,\r\n apply succ_inj,\r\n assumption,\r\n"
     },
     {
       "lean": "theorem succ_eq_succ_of_eq {a b : mynat} : a = b → succ(a) = succ(b) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro aeqb,\r\nrw aeqb,\r\nrefl,\r\n\r\n"
     },
     {
       "lean": "theorem succ_eq_succ_iff (a b : mynat) : succ a = succ b ↔ a = b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\r\nexact succ_inj,\r\nexact succ_eq_succ_of_eq,\r\n"
     },
     {
       "lean": "theorem add_right_cancel (a t b : mynat) : a + t = b + t → a = b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\ninduction t with c hc,\r\nrepeat {rw add_zero at h },\r\nassumption,\r\napply hc,\r\nrepeat {rw add_succ at h},\r\nexact succ_inj (h),\r\n"
     },
     {
       "lean": "theorem add_left_cancel (t a b : mynat) : t + a = t + b → a = b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\nrw add_comm t a at h,\r\nrw add_comm t b at h,\r\napply add_right_cancel a t b,\r\nexact h,\r\n"
     },
     {
       "lean": "theorem add_right_cancel_iff (t a b : mynat) :  a + t = b + t ↔ a = b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\r\nexact add_right_cancel a t b,\r\nintro aeqb,\r\nrw aeqb,\r\nrefl,\r\n"
     },
     {
       "lean": "lemma eq_zero_of_add_right_eq_self {a b : mynat} : a + b = a → b = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction a with n hn,\r\nintro bpz,\r\nrw zero_add at bpz,\r\nexact bpz,\r\nrw succ_add,\r\nintro snbeqn,\r\nhave nbeqn := succ_inj snbeqn,\r\napply hn,\r\nassumption,\r\n\r\n"
     },
     {
       "lean": "theorem succ_ne_zero (a : mynat) : succ a ≠ 0 := \n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro saeq0,\r\ncontradiction,"
     },
     {
       "lean": "lemma add_left_eq_zero {{a b : mynat}} (H : a + b = 0) : b = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction a with n nh,\r\nrw zero_add at H,\r\nassumption,\r\nrw succ_add at H,\r\ncontradiction,\r\n"
     },
     {
       "lean": "lemma add_right_eq_zero {a b : mynat} : a + b = 0 → a = 0 :=\n",
-      "editorText": "sorry"
+      "editorText": "intro abz,\r\nhave bz := add_left_eq_zero abz,"
     },
     {
       "lean": "theorem add_one_eq_succ (d : mynat) : d + 1 = succ d :=\n",
