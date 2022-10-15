@@ -327,15 +327,18 @@
     },
     {
       "lean": "lemma add_right_eq_zero {a b : mynat} : a + b = 0 → a = 0 :=\n",
-      "editorText": "intro abz,\r\nhave bz := add_left_eq_zero abz,"
+      "isSolved": true,
+      "editorText": "intro abz,\r\nhave bz := add_left_eq_zero abz,\r\nrw bz at abz,\r\nrw add_zero at abz,\r\nassumption,\r\n"
     },
     {
       "lean": "theorem add_one_eq_succ (d : mynat) : d + 1 = succ d :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw succ_eq_add_one,\r\nrefl,"
     },
     {
       "lean": "lemma ne_succ_self (n : mynat) : n ≠ succ n :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction n with m hm,\r\nexact zero_ne_succ 0,\r\nintro h,\r\nhave nhm := succ_inj h,\r\ncontradiction,"
     },
     {
       "lean": "theorem mul_pos (a b : mynat) : a ≠ 0 → b ≠ 0 → a * b ≠ 0 :=\n",
