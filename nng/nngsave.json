@@ -154,7 +154,7 @@
     {
       "lean": "example (P Q R S T U: Type)\n(p : P)\n(h : P → Q)\n(i : Q → R)\n(j : Q → T)\n(k : S → T)\n(l : T → U)\n: U :=\n",
       "isSolved": true,
-      "editorText": "apply l,\r\napply j,\r\napply h,\r\napply p,"
+      "editorText": "apply l,\r\napply j,\r\napply h,\r\napply p,\r\n"
     },
     {
       "lean": "example (P Q : Type) : P → (Q → P) :=\n",
@@ -163,21 +163,23 @@
     },
     {
       "lean": "example (P Q R : Type) : (P → (Q → R)) → ((P → Q) → (P → R)) :=\n",
-      "editorText": "intro k,\r\nintro j,\r\nintro p,\r\nhave q := j p,\r\nexact k p q,"
+      "isSolved": true,
+      "editorText": "intro pqr,\r\nintro pq,\r\nintro p,\r\napply pqr,\r\nexact p,\r\napply pq,\r\nexact p,\r\n"
     },
     {
       "lean": "example (P Q F : Type) : (P → Q) → ((Q → F) → (P → F)) :=\n",
       "isSolved": true,
-      "editorText": "intro k,\r\nintro j,\r\nintro p,\r\nhave q := k p,\r\nexact j q,"
+      "editorText": "intro pq,\r\nintro qf,\r\nintro p,\r\napply qf,\r\napply pq,\r\nexact p,\r\n"
     },
     {
       "lean": "example (P Q : Type) : (P → Q) → ((Q → empty) → (P → empty)) :=\n",
       "isSolved": true,
-      "editorText": "intro pq,\r\nintro q0,\r\nintro p,\r\nhave e := pq p,\r\nexact q0 e,\r\n"
+      "editorText": "intro pq,\r\nintro qe,\r\nintro p,\r\nhave q := pq p,\r\nexact qe q,\r\n"
     },
     {
       "lean": "example (A B C D E F G H I J K L : Type)\n(f1 : A → B) (f2 : B → E) (f3 : E → D) (f4 : D → A) (f5 : E → F)\n(f6 : F → C) (f7 : B → C) (f8 : F → G) (f9 : G → J) (f10 : I → J)\n(f11 : J → I) (f12 : I → H) (f13 : E → H) (f14 : H → K) (f15 : I → L)\n : A → L :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro a,\r\napply f15,\r\napply f11,\r\napply f9,\r\napply f8,\r\napply f5,\r\napply f2,\r\napply f1,\r\nexact a,"
     },
     {
       "lean": "example (P Q : Prop) (p : P) (h : P → Q) : Q :=\n",
