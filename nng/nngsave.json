@@ -359,7 +359,8 @@
     },
     {
       "lean": "theorem mul_left_cancel (a b c : mynat) (ha : a ≠ 0) : a * b = a * c → b = c :=\n",
-      "editorText": "intro abaz,\r\ninduction c with n hn,\r\nrw mul_zero at abaz,\r\ncases (mul_eq_zero_iff a b).1 abaz with h,\r\ncontradiction,\r\nassumption,\r\ncases a with m,\r\ncontradiction,\r\n"
+      "isSolved": true,
+      "editorText": "induction c with n hn generalizing b,\r\n  intro abaz,\r\n  rw mul_zero at abaz,\r\n  cases (mul_eq_zero_iff a b).1 abaz with h,\r\n    contradiction,\r\n    assumption,\r\n  have kh : (forall y, exists x, ((y ≠ 0) → y = succ x)),\r\n    intro y,\r\n    induction y with f hf,\r\n      use b,\r\n      intro cont,\r\n      contradiction,\r\n    use f,\r\n    intro b,\r\n    refl,\r\n  intro absn,\r\n  have bnz : b ≠ 0,\r\n    intro bz,\r\n    rw bz at absn,\r\n    rw mul_zero at absn,\r\n    rw mul_succ at absn,\r\n    have anaz : a*n + a = 0,\r\n      rw absn,\r\n      refl,\r\n  rw add_comm at anaz,\r\n  have az : a = 0 := (add_right_eq_zero anaz),\r\n    contradiction,\r\n  have ex : ∃ (x : mynat), b ≠ 0 → b = succ x := kh b,\r\n  cases ex with x sx,\r\n  have bsx := sx bnz,\r\n  rw bsx,\r\n  have hw := hn x,\r\n  rw bsx at absn,\r\n  repeat {rw mul_succ at absn},\r\n  have axan := (add_right_cancel_iff a (a*x) (a*n) ).1 absn,\r\n  apply succ_eq_succ_of_eq,\r\n  exact hw axan,"
     },
     {
       "lean": "lemma one_add_le_self (x : mynat) : x ≤ 1 + x :=\n",
