@@ -9,7 +9,8 @@
     },
     {
       "lean": "lemma example2 (x y : mynat) (h : y = x + 7) : 2 * y = 2 * (x + 7) :=\n",
-      "editorText": "rw h,\nrefl,\n"
+      "isSolved": true,
+      "editorText": "revert x,"
     },
     {
       "lean": "lemma example3 (a b : mynat) (h : succ a = b) : succ(succ(a)) = succ(b) :=\n",
@@ -343,19 +344,22 @@
     },
     {
       "lean": "theorem mul_pos (a b : mynat) : a ≠ 0 → b ≠ 0 → a * b ≠ 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro anz,\r\nintro bnz,\r\nintro abz,\r\ninduction b with n hn,\r\ncontradiction,\r\ncases a with m,\r\ncontradiction,\r\nrw succ_mul at abz,\r\nrw add_succ at abz,\r\ncontradiction,\r\n"
     },
     {
       "lean": "theorem eq_zero_or_eq_zero_of_mul_eq_zero (a b : mynat) (h : a * b = 0) :\n  a = 0 ∨ b = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases b with n,\r\nright,\r\nrefl,\r\nrw mul_succ at h,\r\nleft,\r\nexact add_left_eq_zero h,\r\n"
     },
     {
       "lean": "theorem mul_eq_zero_iff (a b : mynat): a * b = 0 ↔ a = 0 ∨ b = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\r\nintro abz,\r\nexact eq_zero_or_eq_zero_of_mul_eq_zero a b abz,\r\nintro azobz,\r\ncases azobz with az bz,\r\nrw az,\r\nrw zero_mul b,\r\nrefl,\r\nrw bz,\r\nrw mul_zero a,\r\nrefl,\r\n"
     },
     {
       "lean": "theorem mul_left_cancel (a b c : mynat) (ha : a ≠ 0) : a * b = a * c → b = c :=\n",
-      "editorText": "sorry"
+      "editorText": "intro abaz,\r\ninduction c with n hn,\r\nrw mul_zero at abaz,\r\ncases (mul_eq_zero_iff a b).1 abaz with h,\r\ncontradiction,\r\nassumption,\r\ncases a with m,\r\ncontradiction,\r\n"
     },
     {
       "lean": "lemma one_add_le_self (x : mynat) : x ≤ 1 + x :=\n",
