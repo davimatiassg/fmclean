@@ -364,35 +364,42 @@
     },
     {
       "lean": "lemma one_add_le_self (x : mynat) : x ≤ 1 + x :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw le_iff_exists_add,\r\nuse 1,\r\nrw add_comm,\r\n"
     },
     {
       "lean": "lemma le_refl (x : mynat) : x ≤ x :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw le_iff_exists_add,\r\nuse 0,\r\nrw add_zero,\r\nrefl,"
     },
     {
       "lean": "theorem le_succ (a b : mynat) : a ≤ b → a ≤ (succ b) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw le_iff_exists_add,\r\nintro ec,\r\ncases ec with c bc,\r\nrw bc,\r\nrw le_iff_exists_add,\r\nuse (succ c),\r\nrw add_succ,\r\nrefl,"
     },
     {
       "lean": "lemma zero_le (a : mynat) : 0 ≤ a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "use a,\r\nrw zero_add,\r\nrefl,\r\n"
     },
     {
       "lean": "theorem le_trans (a b c : mynat) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases hab with m mh,\r\ncases hbc with n nh,\r\nuse (n+m),\r\nrw nh,\r\nrw mh,\r\nrw add_assoc,\r\nrw add_comm n m,\r\nrefl,"
     },
     {
       "lean": "theorem le_antisymm (a b : mynat) (hab : a ≤ b) (hba : b ≤ a) : a = b :=\n",
-      "editorText": "sorry"
+      "editorText": "cases hab with c bac,\r\nhave bca : a + c = b,\r\n  rw bac,\r\n  refl,\r\ncases hba with d abd,\r\nrw abd at bca,\r\nrw add_assoc at bca,\r\nhave dc0 := eq_zero_of_add_right_eq_self bca,\r\nhave dz := (add_right_eq_zero) dc0,\r\nrw dz at abd,\r\nrw add_zero at abd,\r\nexact abd,"
     },
     {
       "lean": "lemma le_zero (a : mynat) (h : a ≤ 0) : a = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases h with b h,\r\nhave rh : a + b = 0,\r\n  rw h,\r\n  refl,\r\nexact add_right_eq_zero rh,"
     },
     {
       "lean": "lemma succ_le_succ (a b : mynat) (h : a ≤ b) : succ a ≤ succ b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases h with c hc,\r\nuse c,\r\nrw succ_add,\r\nrw succ_eq_succ_iff b (a+c),\r\nexact hc,"
     },
     {
       "lean": "theorem le_total (a b : mynat) : a ≤ b ∨ b ≤ a :=\n",
