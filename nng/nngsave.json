@@ -389,6 +389,7 @@
     },
     {
       "lean": "theorem le_antisymm (a b : mynat) (hab : a ≤ b) (hba : b ≤ a) : a = b :=\n",
+      "isSolved": true,
       "editorText": "cases hab with c bac,\r\nhave bca : a + c = b,\r\n  rw bac,\r\n  refl,\r\ncases hba with d abd,\r\nrw abd at bca,\r\nrw add_assoc at bca,\r\nhave dc0 := eq_zero_of_add_right_eq_self bca,\r\nhave dz := (add_right_eq_zero) dc0,\r\nrw dz at abd,\r\nrw add_zero at abd,\r\nexact abd,"
     },
     {
@@ -403,31 +404,37 @@
     },
     {
       "lean": "theorem le_total (a b : mynat) : a ≤ b ∨ b ≤ a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "revert a,\r\ninduction b with m hm,\r\n  intro a,\r\n  right,\r\n  exact zero_le a,\r\n  intro a,\r\n  cases a with n hn,\r\n  left,\r\n  exact zero_le (succ m),\r\n  have k := hm n,\r\n  cases k,\r\n  left,\r\n  apply succ_le_succ,\r\n  exact k,\r\n  right,\r\n  apply succ_le_succ,\r\n  exact k,\r\n\r\n"
     },
     {
       "lean": "lemma le_succ_self (a : mynat) : a ≤ succ a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw le_iff_exists_add,\r\nuse 1,\r\nrw succ_eq_add_one,\r\nrefl,"
     },
     {
       "lean": "theorem add_le_add_right {a b : mynat} : a ≤ b → ∀ t, (a + t) ≤ (b + t) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro ab,\r\nintro t,\r\ninduction t with k kh,\r\nrepeat { rw add_zero },\r\nexact ab,\r\nrepeat { rw add_succ },\r\napply succ_le_succ,\r\nexact kh,\r\n"
     },
     {
       "lean": "theorem le_of_succ_le_succ (a b : mynat) : succ a ≤ succ b → a ≤ b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "revert b,\r\ninduction a with k hk,\r\nintro b,\r\nintro sab,\r\nexact zero_le b,\r\nintro b,\r\nintro sskb,\r\ncases sskb with x h,\r\nrw succ_add at h,\r\nrw le_iff_exists_add,\r\nuse x,\r\nexact succ_inj h,\r\n"
     },
     {
       "lean": "theorem not_succ_le_self (a : mynat) : ¬ (succ a ≤ a) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\nhave hx := le_succ_self a,\r\nhave wtf := (le_antisymm (succ a) a) h hx,\r\nhave wtf2 := (ne_succ_self a).symm,\r\ncontradiction,"
     },
     {
       "lean": "theorem add_le_add_left {a b : mynat} (h : a ≤ b) (t : mynat) :\n  t + a ≤ t + b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw add_comm,\r\nrw add_comm t b,\r\nexact add_le_add_right h t,"
     },
     {
       "lean": "lemma lt_aux_one (a b : mynat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b :=\n",
-      "editorText": "sorry"
+      "editorText": "intro k,"
     },
     {
       "lean": "lemma lt_aux_two (a b : mynat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) :=\n",
