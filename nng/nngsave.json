@@ -434,15 +434,18 @@
     },
     {
       "lean": "lemma lt_aux_one (a b : mynat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b :=\n",
-      "editorText": "intro k,"
+      "isSolved": true,
+      "editorText": "revert b,\ninduction a with k hk,\nintro b,\nintro h,\ncases h with zb nbz,\ncases b with n hn,\ncontradiction,\napply succ_le_succ,\nexact zero_le n,\nintro b,\nintro h,\ncases h with hb hc,\ninduction b with m hm,\nhave nhc := zero_le (succ k),\ncontradiction,\nhave hd := le_of_succ_le_succ k m hb,\napply succ_le_succ,\nhave he : ¬m ≤ k,\nintro mk,\nhave smk := succ_le_succ m k mk,\ncontradiction,\nhave fk := hk m,\napply fk,\nsplit,\nexact hd,\nexact he,\n "
     },
     {
       "lean": "lemma lt_aux_two (a b : mynat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\nsplit,\nexact(le_of_succ_le_succ a b) ((le_succ (succ a) b) h),\nintro k,\nhave saa := le_trans (succ a) b a h k,\nhave nsaa := not_succ_le_self a,\ncontradiction,\n"
     },
     {
       "lean": "lemma lt_iff_succ_le (a b : mynat) : a < b ↔ succ a ≤ b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\nexact lt_aux_one a b,\nexact lt_aux_two a b,\n"
     }
   ]
 }
