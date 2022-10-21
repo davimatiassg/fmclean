@@ -1,0 +1,21 @@
+Inteiros - Teoremas úteis {
+
+Cancelamento multiplicativo (∀c, a, b)[ (c ≠ 0 & ac = bc) ⇒ a = b ].
+	
+Divisibilidade (def) (∀a, b)[ a | b ⇐⇒ (∃k ∈ Z)[ b = ak ] ].
+
+Divide é uma preordem: 
+|(∀a)[ a | a ] 							[Reflexividade]
+|(∀a, b, c)[ a | b & b | c ⇒ a | c] 	[Transitividade];
+
+Propriedades de "Divide":
+| (∀a)[ 1 | a ];
+| (∀a, b)[ a | 0];
+| (∀a, b)[ a | b ⇒ a | −b & − a | b ];
+| (∀a, b)[ a | b ⇒ a | bx ];
+| (∀ a, b, c)[ a | b & a | c ⇒ a | b + c ];
+| (∀ a, b, c, x, y)[ a | b & a | c ⇒ a | bx + cy ];		//BEZOUT SEUFILHO DA
+| (∀ a, b, c)[ c ≠ 0  ⇒ ( a | b ⇐⇒ ac | bc )];
+} 
+
+
