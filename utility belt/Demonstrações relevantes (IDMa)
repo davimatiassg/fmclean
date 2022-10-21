@@ -71,4 +71,39 @@ Propriedades do divide:
     	Logo ak = b (Z-CMul c (ak) b);
 }
 
+PBO Shiftado:
+{
+	Seja l inteiro;
+	Seja A um conjunto de inteiros;
+	Seja a o menor inteiro positivo tal que (a+l-1) ∈ A;
+	Como 0 < a, logo 0 ≤ a-1 
+	{
+		Seja a inteiro positivo;
+		Caso a < 1: contradição (não existe número entre 0 e 1);
+		Caso a = 1:
+			Logo, 1-1 = 0;
+		Caso a > 1:
+			logo a-1 > 0;
+	}
+	logo l ≤ a-1+l (1);
+	Uso (a-1+l) como testemunha;
+
+	Parte do pertencimento:
 	
+		Como l ≤ (a-1+l) e pela escolha de a, logo (a-1+l) ∈ { a' ∈ A  |  l ≤ a' };
+
+	Parte da minimidade:
+
+		Seja b inteiro positivo tal que (b+l-1) ∈ { a' ∈ A  |  l ≤ a' };
+		Logo, pela escolha de a, temos b ≤ a
+		Logo, temos b+l-1 ≤ a+l-1
+}
+
+
+Divisão de euclides:
+(∀a, b)[ b ≠ 0 ⇒ (∃!k, r)[a = bk + r & 0 ≤ r < |b|]
+{
+	Sejam a, b inteiros;
+	Suponha b diferente de zero;
+	
+}
