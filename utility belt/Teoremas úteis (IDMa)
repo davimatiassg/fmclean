@@ -18,4 +18,16 @@ Propriedades de "Divide":
 | (∀ a, b, c)[ c ≠ 0  ⇒ ( a | b ⇐⇒ ac | bc )];
 } 
 
+Boa ordenação (def): (∀ A : Set(int)[(∀ B ⊆ A)[ B habitado ⇒ B possui mínimo ].
 
+Mínimo (def): 
+(∀ A : Set(int))(∀ m ∈ A)[ (m = min A) ⇐⇒ m ∈ A & (∀m' ∈ A)[ m ≤ m' ] ].
+
+Máximo (def): 
+(∀ A : Set(int))(∀ m ∈ A)[ (m = max A) ⇐⇒ m ∈ A & (∀m' ∈ A)[ m' ≤ m ] ].
+
+PBO Shiftado:
+(∀ l)(∀ A : Set(int)[ (∃ a ∈ A)[ l ≤ a ] ⇒ { a ∈ A  |  l ≤ a } possui mínimo].
+
+Lema da divisão de Euclides:
+(∀a, b)[ b ≠ 0 ⇒ (∃!k, r)[a = bk + r & 0 ≤ r < |b|]
