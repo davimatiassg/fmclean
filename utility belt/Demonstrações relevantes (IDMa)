@@ -1,0 +1,74 @@
+Demonstrações:
+Divide é uma preordem: 
+|(∀a)[ a | a ] 							[Reflexividade]
+|(∀a, b, c)[ a | b & b | c ⇒ a | c] 	[Transitividade];
+Demonstração da transitividade (reflexividade é trivial)
+{
+	Sejam a, b, c inteiros;
+	Sejam inteiros u, v tais que a*u = b e b*v = c;
+	Logo, temos (a*u)*v = c;
+	Uso u*v como testemunha;
+}
+
+Propriedades do divide:
+| (∀a, b) a | b ⇒ a | −b & − a | b
+{
+	Sejam a, b inteiros;
+	Seja k tal que ak = b;
+	Parte a|-b
+		Uso -k como testemunha
+		Calculamos:
+			-b = - (k*a)  [Escolha de k]
+			   = -1*(k*a) 
+			   = (-1*k)*a 
+			   = -ka;
+	Parte -a | b (similar);
+}
+| (∀a, b, c) a | b ⇒ a | bc;
+{
+	Sejam a, b, c inteiros;
+	Seja k inteiro tq ak = b;
+	Uso (k*c) como testemunha;
+	Calculamos:
+		a*(k*c) = (a*k)*c
+				= b*c [Escolha de k]
+}
+| (∀ a, b, c) a | b & a | c ⇒ a | b + c;
+{
+	Sejam a, b, c inteiros;
+	Sejam u, v inteiros tq au = b e av = c;
+	Uso (u+v) como testemunha:
+	Calculamos:
+		a*(u+v) = a*u + a*v
+			    = b + av      [Escolha de u]
+			    = b + c       [Escolha de v]
+}
+| (∀ a, b, c, x, y) a | b & a | c ⇒ a | bx + cy;
+{
+	Sejam a, b, c, x, y inteiros;
+	Sejam u, v inteiros tq au = b e av = c;
+	Uso (ux + vy) como testemunha;
+	Calculamos
+		a*(ux*vy) = aux + avy
+				  = bx + avy   [Escolha de u]
+				  = bx + cy    [Escolha de v]			  
+}
+| (∀ a, b, c)[ c ≠ 0  ⇒ ( a | b ⇐⇒ ac | bc )];
+{
+	Sejam a, b, c inteiros;
+	Suponha c diferente de zero;
+
+	Parte da ⇒:
+		Seja k inteiro tal que ak = b;
+		Uso k como testemunha;
+		Calculamos:
+			(ac)*k = (a*k)*c;
+				 = b * c [Escolha de k];
+
+    Parte da ⇐:
+    	Seja k tal que (ac)*k = bc;
+    	Logo, (ak)*c = bc;
+    	Logo ak = b (Z-CMul c (ak) b);
+}
+
+	
