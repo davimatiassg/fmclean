@@ -132,10 +132,24 @@ Divisão de euclides:
 
 					Demonstro que a - b(q+1) pertence a K
 						Uso q+1 como testemunha;
-						
+
 					Logo, como r é o menor inteiro positivo de K e a - b(q+1) < r, logo r-b < 0
 
 				Caso -b positivo:
 		 			Similar
+
+
+	Parte da Unicidade:
+		Sejam q, r, q', r' inteiros tais que 
+		|a = r + bq & 0 ≤ r < |b|
+		|a = r'+ bq'& 0 ≤ r'< |b|
+
+		Calculamos:
+			r = a - bq
+			  = (r'+ bq')-bq
+			  = r' + b(q'-q)
+		
+
+
 		
 }
