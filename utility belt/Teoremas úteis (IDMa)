@@ -31,3 +31,7 @@ PBO Shiftado:
 
 Lema da divisão de Euclides:
 (∀a, b)[ b ≠ 0 ⇒ (∃!k, r)[a = bk + r & 0 ≤ r < |b|]
+
+Teorema da expansão em bases.... Ok, não tão útil até agora
+
+
