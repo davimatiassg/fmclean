@@ -106,19 +106,36 @@ Divisão de euclides:
 	Sejam a, b inteiros;
 	Suponha b diferente de zero;
 	Parte da Existência:
-		Considere o conjunto K = { a - k*b | k ∈ Z}
+		Considere o conjunto K = { a - bk | k ∈ Z}
 		Pela escolha de b, temos que K possui valores positivos (*Lema  1);
-		Logo, pelo PBO, seja r o menor inteiro positivo habitante de K;
-		Seja q inteiro tal que a = q*b + r;
+		Logo, pelo PBO, seja r o menor inteiro não negativo habitante de K;
+		Seja q inteiro tal que a -bq = r;
 		Uso q, r como testemunhas;
 
 		Parte a = bq + r:
 			Escolha de q;
 
-		Parte 0 ≤ r < |b|:
-			Pela escolha de r, logo 0 ≤ r;
+		Parte 0 ≤ r < |b|;
 
+			Parte 0 ≤ r:
+				Pela escolha de r, logo 0 ≤ r;
 
-		 
+			Parte r < |b|:
+
+				Caso b positivo: ///Não vou mais ficar citando Z-TRI toda hora!
+
+					Basta provar que r -b < 0
+					Calculamos:
+						r > r-b;
+						  > (a -bq) -b;
+						  > a -b*(q + 1);
+
+					Demonstro que a - b(q+1) pertence a K
+						Uso q+1 como testemunha;
+						
+					Logo, como r é o menor inteiro positivo de K e a - b(q+1) < r, logo r-b < 0
+
+				Caso -b positivo:
+		 			Similar
 		
 }
