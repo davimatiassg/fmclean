@@ -101,9 +101,54 @@ PBO Shiftado:
 
 
 Divisão de euclides:
-(∀a, b)[ b ≠ 0 ⇒ (∃!k, r)[a = bk + r & 0 ≤ r < |b|]
+(∀a, b)[ b ≠ 0 ⇒ (∃!q, r)[a = bq + r & 0 ≤ r < |b|]
 {
 	Sejam a, b inteiros;
 	Suponha b diferente de zero;
-	
+	Parte da Existência:
+		Considere o conjunto K = { a - k*b | k ∈ Z}
+		Pela escolha de b, temos que K possui valores positivos (*Lema  1);
+		Logo, pelo PBO, seja r o menor inteiro positivo habitante de K;
+		Seja q inteiro tal que a = q*b + r;
+		Uso q, r como testemunhas;
+
+		Parte a = bq + r:
+			Escolha de q;
+
+		Parte 0 ≤ r < |b|:
+			Pela escolha de r, logo 0 ≤ r;
+
+
+	Lema 1: para todos a, b, existe um k tal que  0 ≤ a-kb:
+		Sejam a, b inteiros;
+		Pela Z-TRI b, separo em casos:
+
+		Caso b positivo:
+			Uso (-2|a|) como testemunha;
+			Calculamos:
+					a - (-2|a|)*b = a + 2*|a|*b
+
+			Pela Z-TRI a, separo em casos:
+				
+			Caso a positivo:
+				Logo, a + 2*|a|*b = a + 2*a*b
+				Como o Pos é * fechado e + fechado, logo a + 2*|a|*b é positivo;
+
+			Caso 0 = a:
+				Calculamos 
+				a + 2*|a|*b = 0 + 2*0*b
+							= 0 + 0
+							= 0
+
+			Caso -a positivo:
+				Logo, a + 2*|a|*b = a + 2*(-a)*b;
+								  = a - a*2b
+								  = a (1 - 2b)
+
+
+		Caso -b positivo:
+
+		Caso a = 0 
+			 
+		
 }
