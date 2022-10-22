@@ -147,9 +147,33 @@ Divisão de euclides:
 		Calculamos:
 			r = a - bq
 			  = (r'+ bq')-bq
-			  = r' + b(q'-q)
-		
+			  = r' + b(q'-q) [D1]
+
+		Calculamos:
+		|b| > r - r';
+			> r' + b(q'-q) - r';
+			> b(q'-q);
+
+		Caso b positivo:
+			Logo, como b > b(q'-q), temos 1 > q'-q;
+			Logo q'-q ≤ 0;
+
+			Caso -(q'-q) positivo:
+				Como r' < b, logo r' < b(-(q'-q));
+				Logo r' -b(-(q'-q)) < 0;
+				Logo r' + b(q'-q) < 0;
+				Logo r < 0 [D1]
+				Contradição
+
+			Caso q'-q = 0;
+				Logo, q' = q;
+				Como r = r' + b(q'-q), logo r = r' + b*0;
+				Logo r = r';
 
 
+		Caso b negativo:
+			Similar;
+			
+	Fim da demonstração
 		
 }
