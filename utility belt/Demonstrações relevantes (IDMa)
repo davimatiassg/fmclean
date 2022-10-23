@@ -207,3 +207,35 @@ Lema de Bézout:
 	Uso nm como testemunha para d;
 
 }
+
+Algorítmo de Euclides:
+{
+	Sejam a, b inteiros
+
+	Seja d inteiro um MDC(a, b);
+	Pela divisão de euclides, sejam q, r, tais que a = qb + r e r < |b|, com r não negativo;
+	Como d divide a e b, sejam s e t inteiros tais que d*s = a e d*t = b;
+	Logo, d*s = q*(d*t) + r;
+	Logo, r = ds - qdt;
+	Logo, r = d*(s-qt);
+	Logo d | r;
+
+
+	Indução shiftada (base 1) generalizando d'
+
+	Parte base:
+	{
+		Como 1 é unit, logo 1 divide d;
+	}
+
+	Passo indutivo:
+	{
+		Suponha que d é mdc de 
+	}
+	Seja d' inteiro tal que d' | a e d' | r;
+	Logo, sejam u, v, tais que d'*u = a e d'*v = r;
+
+	ds = dqt + r
+	d'*(alguma tralha) = d
+	Logo d' | d
+}
