@@ -32,6 +32,24 @@ PBO Shiftado:
 Lema da divisão de Euclides:
 (∀a, b)[ b ≠ 0 ⇒ (∃!k, r)[a = bk + r & 0 ≤ r < |b|]
 
-Teorema da expansão em bases.... Ok, não tão útil até agora
+Definição: invertível
+(∀a)[ a é invertível ⇐⇒ (∃a' ∈ Z)[ a'a = 1 ] ].
+
+Definição: Unit
+(∀a)[ a é unit ⇐⇒ (∀x ∈ Z)[ a|x ] ].
+
+Nos inteiros, invertível ⇐⇒ unity;
+
+MDC (def) (∀a, b, d) [MDC(a, b) = d ⇐⇒ d | a & d | b & (∀d') [d' | a & d' | b ⇒ d | d' ] ].
+
+Propriedades do MDC:
+| (∀a)[MDC(a, a) = a] idempotência
+| (∀a)[MDC(a, 0) = a] identidade-R
+| (∀a)[MDC(a, 1) = 1] absorvente-R
+| (∀a, b)[MDC(a, b) = MDC(b, a)] comutatividade
+| (∀a, b, c)[MDC((a, b), c) = MDC(a,(b, c))] associatividade
+
+Lema de BEZOUT	
+(∀a, b)(∃s, t, d)[ d = sa + tb ]
 
 
