@@ -254,3 +254,49 @@ Algorítmo de Euclides: (∀a, b)[b > 0 ⇒ MDC(a, b) = MDC(b, rem(a, b))]
 		Logo, D é conjunto dos divisores comuns a b, r.
 		Logo, MDC(a, b) = MDC(b, r).
 }
+
+Eficiência de Euclides: (∀a, b)[b ≤ a ⇒ rem(a , b) < a/2]
+{
+	Sejam a, b;
+	Suponha b ≤ a;
+	Seja r = rem (a, b);
+	Separo em casos:
+	
+	Caso b ≤ a/2:
+		Como r < b, logo b < a/2;
+
+	Caso b > a/2:
+		Logo quot(a, b) = 1;
+		Logo r = a-b < a/2;
+}
+
+(∀a) [ Prime(a) ⇐⇒ Irredutível(a) ]:
+{
+	Seja p inteiro;
+	Sejam x, y inteiros tais que p | xy;
+
+	Parte da volta:
+
+		Suponha p irredutível;
+		Logo, p não é unit
+		Logo, divido em casos:
+
+		Caso x unit:
+			Logo, p | y
+		Caso y unit:
+			Logo, p | x
+
+	Parte da ida:
+
+		Suponha p primo;
+		Logo, p não é unit;
+		Logo, divido em casos:
+
+		Caso p | x:
+			Pelo LEM (p | y), divido em casos
+			Seja n inteiro tal que pn = x;
+			Logo, p | pny
+			Logo, divido em casos:
+				Caso p | 
+
+}
