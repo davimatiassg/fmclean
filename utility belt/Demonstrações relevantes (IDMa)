@@ -203,18 +203,18 @@ Lema de Bézout: (∀a, b)(∃s, t)[ MDC(a, b) = sa + tb ]
 	Logo, sejam x, y inteiros tais que n = ax + by 
 	Vou demonstrar que n divide qualquer elemento de A:
 		Seja n' um elemento qualquer de A;
-		Sejam x', y'inteiros tais que n' = ax' + by';
-		Pela divisão de euclides, sejam q, r tais que r + nq = n' e 0 ≤ r < |n|;
+		Sejam x', y'inteiros tais que ax' + by' ∈ A;
+		Pela divisão de euclides, sejam q, r tais que r + nq = ax' + by' e 0 ≤ r < |n|;
 
 		Calculamos:
-			r = n' - nq;
+			r = ax' + by' - nq;
 			  = (ax'+by') - (ax+by)q;
 			  = ax'+by' - axq-byq;
 			  = a(x'-xq) + b(y'-yq);
 		Logo, r pertence a A [uso ((x'-xq), (y'-yq)) como testemunhas];
 		Como r < n e n é o menor positivo de A, logo r não é positivo;
 		Logo, como 0 ≤ r, temos r = 0;
-		Logo, n divide n' (uso q como testemunha);
+		Logo, n divide ax' + by' (uso q como testemunha);
 
 	Como n divide qualquer elemento de A, logo n | a e n | b;
 	Logo, n | MDC(a, b) (1);
@@ -224,18 +224,16 @@ Lema de Bézout: (∀a, b)(∃s, t)[ MDC(a, b) = sa + tb ]
 	Uso (x, y) como testemunha.
 }
 
-Algorítmo de Euclides:
+Algorítmo de Euclides: (∀a, b)[ MDC(a, b) = MDC(b, rem(a, b))]
 {
-	Sejam a, b inteiros
+	Sejam a, b inteiros;
+	Pelo lema de Bézout, sejam x, y inteiros tais que MDC(a, b) = xa + yb;
+	Pela divisão euclidiana, sejam q, r tais que  a = qb + r e 0 ≤ r < |b|;
+	Calculamos:
+		MDC(a, b) = x(qb + r) + yb;
+				  = xqb + xr + yb;
+				  = (xq + y)b + xr;
 
-	Seja d inteiro um MDC(a, b);
-	Pela divisão de euclides, sejam q, r, tais que a = qb + r e r < |b|, com r não negativo;
-	Como d divide a e b, sejam s e t inteiros tais que d*s = a e d*t = b;
-	Logo, d*s = q*(d*t) + r;
-	Logo, r = ds - qdt;
-	Logo, r = d*(s-qt);
-	Logo d | r;
-	r < |dt|
-	d*(s-qt) < dt
-	s-qt < t
+	Pelo lema de Bézout
+
 }

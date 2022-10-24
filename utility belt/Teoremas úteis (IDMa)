@@ -50,10 +50,10 @@ Propriedades do MDC:
 | (∀a, b, c)[MDC((a, b), c) = MDC(a,(b, c))] associatividade
 
 Lema de BEZOUT	
-(∀a, b)(∃s, t, d)[ d = sa + tb ]
+(∀a, b)(∃s, t)[ MDC(a, b) = sa + tb ]
 
 Algorítmo de Euclides:
-(∀a, b)[ MDC(a, b) = MDC(a, rem(a, b))]
+(∀a, b)[ MDC(a, b) = MDC(b, rem(a, b))]
 
 
 
