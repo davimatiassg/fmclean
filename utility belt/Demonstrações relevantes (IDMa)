@@ -193,19 +193,35 @@ Equivalência entre invertível e unit nos inteiros:
 }
 
 
-Lema de Bézout:
+Lema de Bézout: (∀a, b)(∃s, t)[ MDC(a, b) = sa + tb ]
 {
-	Sejam a, b inteiros,
-	Sejam s, t inteiros,
-	Seja n tal que n = MDC(a, b) (1);
-	Logo, n | a e n | b;
-	Como (1), logo, n | sa;
-	Como (1), logo, n | tb;
-	Logo, n | sa + tb;
-	logo, seja m tal que nm = sa + tb;
-	Uso s, t como testemunhas para s, t;
-	Uso nm como testemunha para d;
+	Sejam a, b inteiros;
+	Considere o conjunto A = {ax + by | x, y ∈ Z};
+	Logo, a e b pertencem a A (trivial);
+	Como A é habitado e possui valores positivos (uso (a*a + b*b) como testemunha), seja
+	n o menor elemento positivo de A.
+	Logo, sejam x, y inteiros tais que n = ax + by 
+	Vou demonstrar que n divide qualquer elemento de A:
+		Seja n' um elemento qualquer de A;
+		Sejam x', y'inteiros tais que n' = ax' + by';
+		Pela divisão de euclides, sejam q, r tais que r + nq = n' e 0 ≤ r < |n|;
 
+		Calculamos:
+			r = n' - nq;
+			  = (ax'+by') - (ax+by)q;
+			  = ax'+by' - axq-byq;
+			  = a(x'-xq) + b(y'-yq);
+		Logo, r pertence a A [uso ((x'-xq), (y'-yq)) como testemunhas];
+		Como r < n e n é o menor positivo de A, logo r não é positivo;
+		Logo, como 0 ≤ r, temos r = 0;
+		Logo, n divide n' (uso q como testemunha);
+
+	Como n divide qualquer elemento de A, logo n | a e n | b;
+	Logo, n | MDC(a, b) (1);
+	Como MDC(a, b) | a e MDC(a, b) | b, logo MDC(a, b) | ax + by;
+	Logo, MDC(a, b) | n (2);
+	Por (1) e (2), temos |MDC(a, b)| = |n|;
+	Uso (x, y) como testemunha.
 }
 
 Algorítmo de Euclides:
@@ -219,23 +235,7 @@ Algorítmo de Euclides:
 	Logo, r = ds - qdt;
 	Logo, r = d*(s-qt);
 	Logo d | r;
-
-
-	Indução shiftada (base 1) generalizando d'
-
-	Parte base:
-	{
-		Como 1 é unit, logo 1 divide d;
-	}
-
-	Passo indutivo:
-	{
-		Suponha que d é mdc de 
-	}
-	Seja d' inteiro tal que d' | a e d' | r;
-	Logo, sejam u, v, tais que d'*u = a e d'*v = r;
-
-	ds = dqt + r
-	d'*(alguma tralha) = d
-	Logo d' | d
+	r < |dt|
+	d*(s-qt) < dt
+	s-qt < t
 }
