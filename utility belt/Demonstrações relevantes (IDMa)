@@ -224,16 +224,28 @@ Lema de Bézout: (∀a, b)(∃s, t)[ MDC(a, b) = sa + tb ]
 	Uso (x, y) como testemunha.
 }
 
-Algorítmo de Euclides: (∀a, b)[ MDC(a, b) = MDC(b, rem(a, b))]
+Algorítmo de Euclides: (∀a, b)[b > 0 ⇒ MDC(a, b) = MDC(b, rem(a, b))]
 {
 	Sejam a, b inteiros;
-	Pelo lema de Bézout, sejam x, y inteiros tais que MDC(a, b) = xa + yb;
-	Pela divisão euclidiana, sejam q, r tais que  a = qb + r e 0 ≤ r < |b|;
-	Calculamos:
-		MDC(a, b) = x(qb + r) + yb;
-				  = xqb + xr + yb;
-				  = (xq + y)b + xr;
+	Suponha b > 0;
+	Separo em casos:
 
-	Pelo lema de Bézout
+	Caso a = 0:
 
+		Logo, MDC(a, b) = b;
+		Como a = 0, logo rem(a, b) = 0;
+		Logo, MDC(b, rem(a, b)) = b;
+		Logo, MDC(a, b) = MDC(b, rem(a, b));
+
+	Caso a ≠ 0:
+		Sejam q, r inteiros tais que r = a - qb & 0 ≤ r < b;
+		
+		Seja d um divisor de a e b;
+		Seja d' um divisor de b e r,
+
+		Como d | a e d | b, logo d | a -qb;
+		Logo, d | r;
+		
+		Como d' | b e d' | r, logo d' | bq + r;
+		Logo, d' | a;
 }

@@ -53,7 +53,7 @@ Lema de BEZOUT
 (∀a, b)(∃s, t)[ MDC(a, b) = sa + tb ]
 
 Algorítmo de Euclides:
-(∀a, b)[ MDC(a, b) = MDC(b, rem(a, b))]
+(∀a, b)[b > 0 ⇒ MDC(a, b) = MDC(b, rem(a, b))]
 
 
 
