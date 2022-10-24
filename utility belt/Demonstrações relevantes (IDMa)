@@ -240,12 +240,17 @@ Algorítmo de Euclides: (∀a, b)[b > 0 ⇒ MDC(a, b) = MDC(b, rem(a, b))]
 	Caso a ≠ 0:
 		Sejam q, r inteiros tais que r = a - qb & 0 ≤ r < b;
 		
-		Seja d um divisor de a e b;
-		Seja d' um divisor de b e r,
+		Vou demosntrar que ser divisor de a, b equivale a ser divisor de b, r:
 
-		Como d | a e d | b, logo d | a -qb;
-		Logo, d | r;
-		
-		Como d' | b e d' | r, logo d' | bq + r;
-		Logo, d' | a;
+			Seja d um divisor de a e b;
+			Logo d | a -qb [Bézout];
+			Logo, d | r;
+			
+			Seja d' um divisor de b e r,
+			Logo d' | bq + r [Bézout];
+			Logo, d' | a;
+
+		Seja D o conjunto dos divisores comuns a a, b.
+		Logo, D é conjunto dos divisores comuns a b, r.
+		Logo, MDC(a, b) = MDC(b, r).
 }
