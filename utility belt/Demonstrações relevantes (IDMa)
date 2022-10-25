@@ -273,13 +273,11 @@ Eficiência de Euclides: (∀a, b)[b ≤ a ⇒ rem(a , b) < a/2]
 (∀a) [ Prime(a) ⇐⇒ Irredutível(a) ]:
 {
 	Seja p inteiro;
-	Sejam x, y inteiros tais que p | xy;
-
-	Parte da volta:
-
-		Suponha p irredutível;
-		Logo, p não é unit
-		Logo, divido em casos:
+	Parte da volta:		
+		Suponha p irredutível (1);
+		Logo, p não é unit;
+		Sejam x, y inteiros tais que p | xy;
+		por (1), divido em casos:
 
 		Caso x unit:
 			Logo, p | y
@@ -288,15 +286,39 @@ Eficiência de Euclides: (∀a, b)[b ≤ a ⇒ rem(a , b) < a/2]
 
 	Parte da ida:
 
+		Sejam x, y inteiros tais que p = xy;
 		Suponha p primo;
 		Logo, p não é unit;
 		Logo, divido em casos:
 
-		Caso p | x:
-			Pelo LEM (p | y), divido em casos
-			Seja n inteiro tal que pn = x;
-			Logo, p | pny
-			Logo, divido em casos:
-				Caso p | 
+		Caso x unit:
+			Logo, xy = 1y;
+			Logo, p | y [Uso 1 como testemunha];
+		Caso y unit:
+			Similar;
+	QED
+}
+
+(∀x, t) (2^t | x ⇐⇒ 2^(t-1) | x & 2 | quot(x, 2^(t-1))) 
+{
+	Sejam x, t inteiros
+	Parte da ida:
+		Suponha 2^t | x;
+		Logo, seja k tal que (2^t)*k = x;
+		Logo, 2^(t-1) * 2 * k = x;
+		Logo, quot(x, 2^(t-1)) = 2k;
+		Logo, 2 | 2k [ũso 1 como testemunha];
+
+
+	Volta
+		Suponha 2^(t-1) | x & 2 | quot(x, 2^(t-1))
+		Indução generalizando t;
+		Caso base:
+			Trivial;/
+		Passo indutivo
+		Logo, existe k tal que 2k = quot(x, 2^(t-1);
+		Seja k' tal que k'*2^(t-1) = x
+		Logo, 
+
 
 }
