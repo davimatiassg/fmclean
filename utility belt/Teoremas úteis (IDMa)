@@ -1,4 +1,4 @@
-	Inteiros - Teoremas úteis {
+Inteiros - Teoremas úteis {
 
 Cancelamento multiplicativo (∀c, a, b)[ (c ≠ 0 & ac = bc) ⇒ a = b ].
 	
@@ -56,7 +56,7 @@ Algorítmo de Euclides:
 (∀a, b)[b > 0 ⇒ MDC(a, b) = MDC(b, rem(a, b))]
 
 Definição: Irredutível
-Irred(p) ⇐⇒ p não unit & (∀a, b)[ p | ab ⇒ a unit ou b unit ]
+Irred(p) ⇐⇒ p não unit & (∀a, b)[ p = ab ⇒ a unit ou b unit ]
 
 Definição: Primo
 Prime(p) ⇐⇒ p não unit & (∀a, b)[ p | ab ⇒  p | a ou  p | b ]
