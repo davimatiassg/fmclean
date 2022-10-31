@@ -10,7 +10,7 @@
     {
       "lean": "lemma example2 (x y : mynat) (h : y = x + 7) : 2 * y = 2 * (x + 7) :=\n",
       "isSolved": true,
-      "editorText": "revert x,"
+      "editorText": "rw h,\nrefl,"
     },
     {
       "lean": "lemma example3 (a b : mynat) (h : succ a = b) : succ(succ(a)) = succ(b) :=\n",
@@ -20,12 +20,12 @@
     {
       "lean": "lemma add_succ_zero (a : mynat) : a + succ(0) = succ(a) :=\n",
       "isSolved": true,
-      "editorText": "rw add_succ,\nrw add_zero,\nrefl\n"
+      "editorText": "rw add_succ,\nrw add_zero,\nrefl,\n"
     },
     {
       "lean": "lemma zero_add (n : mynat) : 0 + n = n :=\n",
       "isSolved": true,
-      "editorText": "induction n with d hd,\nrw add_zero,\nrefl,\nrw add_succ,\nrw hd,\nrefl"
+      "editorText": "induction n with d hd,\nrw add_zero,\nrefl,\nrw add_succ,\nrw hd,\nrefl,"
     },
     {
       "lean": "lemma add_assoc (a b c : mynat) : (a + b) + c = a + (b + c) :=\n",
@@ -435,7 +435,7 @@
     {
       "lean": "lemma lt_aux_one (a b : mynat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b :=\n",
       "isSolved": true,
-      "editorText": "revert b,\ninduction a with k hk,\nintro b,\nintro h,\ncases h with zb nbz,\ncases b with n hn,\ncontradiction,\napply succ_le_succ,\nexact zero_le n,\nintro b,\nintro h,\ncases h with hb hc,\ninduction b with m hm,\nhave nhc := zero_le (succ k),\ncontradiction,\nhave hd := le_of_succ_le_succ k m hb,\napply succ_le_succ,\nhave he : ¬m ≤ k,\nintro mk,\nhave smk := succ_le_succ m k mk,\ncontradiction,\nhave fk := hk m,\napply fk,\nsplit,\nexact hd,\nexact he,\n "
+      "editorText": "revert a,\ninduction b with b' hb,\n  intro a,\n  intro ha,\n  cases ha with alz nzla,\n  have zla := zero_le (a),\n  contradiction,\n\n  intro a,\n  induction a with a' ha,\n    intro h,\n    apply succ_le_succ,\n    exact zero_le b',\n\n    intro hab,\n    apply succ_le_succ,\n    apply hb,\n    cases hab with sasb nsbsa,\n    split,\n      exact le_of_succ_le_succ a' b' sasb,\n\n      intro bla,\n      have sbsa := succ_le_succ b' a' bla,\n      contradiction,\n  \n  "
     },
     {
       "lean": "lemma lt_aux_two (a b : mynat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) :=\n",
